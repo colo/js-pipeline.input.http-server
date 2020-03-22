@@ -101,25 +101,28 @@ module.exports = new Class({
 
 		var first_connect = function(){
 			debug_internals('first_connect');
-			var addr = this.server.address();
-			debug_internals('first_connect addr %o', addr);
-				var bind = typeof addr === 'string'
-				? addr
-				: addr.address+':'+addr.port+'['+addr.family+']';
+			if(!this.options.id){
+				var addr = this.server.address();
+				debug_internals('first_connect addr %o', addr);
+					var bind = typeof addr === 'string'
+					? addr
+					: addr.address+':'+addr.port+'['+addr.family+']';
 
-				this.options.id = bind;//set ID
-				// if(this.options.apps_dir)
-				// 	this.load(this.options.apps_dir)
+					this.options.id = bind;//set ID
+			}
 
-				//this.load(path.join(__dirname, '../../../../../apps'));
-				if(Array.isArray(this.options.load)){
-					Array.each(this.options.load, function(app){
-						this.load(path.join(process.cwd(), app));
-					}.bind(this));
-				}
-				else if(this.options.load){
-					this.load(path.join(process.cwd(), this.options.load));
-				}
+			// if(this.options.apps_dir)
+			// 	this.load(this.options.apps_dir)
+
+			//this.load(path.join(__dirname, '../../../../../apps'));
+			if(Array.isArray(this.options.load)){
+				Array.each(this.options.load, function(app){
+					this.load(path.join(process.cwd(), app));
+				}.bind(this));
+			}
+			else if(this.options.load){
+				this.load(path.join(process.cwd(), this.options.load));
+			}
 
 		}.bind(this);
 
