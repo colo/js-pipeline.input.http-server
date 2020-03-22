@@ -17,7 +17,7 @@ module.exports = new Class({
   server: null,
 
   options: {
-		id: '',
+		id: undefined,
 		path: '',
 
 		// apps_dir: null,
