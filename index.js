@@ -20,6 +20,7 @@ module.exports = new Class({
 		id: '',
 		path: '/',
 
+		apps_dir: null,
 		authentication: null,
 
 		logs: null,
@@ -107,7 +108,10 @@ module.exports = new Class({
 				: addr.address+':'+addr.port+'['+addr.family+']';
 
 				this.options.id = bind;//set ID
-				this.load(path.join(__dirname, '../../../../../apps'));
+				if(this.options.apps_dir)
+					this.load(this.options.apps_dir)
+
+				//this.load(path.join(__dirname, '../../../../../apps'));
 
 		}.bind(this);
 
