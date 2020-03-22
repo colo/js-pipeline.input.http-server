@@ -18,7 +18,7 @@ module.exports = new Class({
 
   options: {
 		id: '',
-		path: '/',
+		path: '',
 
 		// apps_dir: null,
 		authentication: null,
