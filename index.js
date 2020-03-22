@@ -101,7 +101,7 @@ module.exports = new Class({
 
 		var first_connect = function(){
 			debug_internals('first_connect');
-			if(!this.options.id){
+			if(!this.options.id || this.options.id === undefined){
 				var addr = this.server.address();
 				debug_internals('first_connect addr %o', addr);
 					var bind = typeof addr === 'string'
