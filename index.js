@@ -133,9 +133,15 @@ module.exports = new Class({
 
 		this.addEvent(this.ON_CONNECT, function(){this.removeEvent(this.ON_CONNECT, first_connect)});
 
+		// this.app.set('port', this.options.port);
+		// this.server = http.createServer(this.app);
+		debug('CONN', this.options.port, this.options.host)
 		this.app.set('port', this.options.port);
 		this.server = http.createServer(this.app);
-
+		this.server.listen({
+	    host: this.options.host,
+	    port: this.options.port
+		})
 
 
 		this.server.on('error', function(err){
