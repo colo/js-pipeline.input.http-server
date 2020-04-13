@@ -146,7 +146,7 @@ module.exports = new Class({
 
 		this.server.on('error', function(err){
 			debug_internals('httpServer err %o', err);
-			this.fireEvent(this.ON_CONNECT_ERROR, error);
+			this.fireEvent(this.ON_CONNECT_ERROR, err);
 		}.bind(this));
 
 		this.server.on('listening', function(){
